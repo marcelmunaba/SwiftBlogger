@@ -9,7 +9,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.render("views/index.ejs");
+  res.render("index.ejs");
 });
 
 //TODO : routing for post requests(create a post)
