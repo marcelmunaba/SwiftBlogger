@@ -1,0 +1,59 @@
+<%- include("partials/header.ejs") %>
+
+<% if (locals.list.length != 0) { %>
+  <h2 class="display-5 fw-bold text-body-emphasis text-center" style="margin: 50px 50px !important;">Your Blogposts</h2>
+<% } %>
+<!-- Displaying posts -->
+<div class="row justify-content-center">
+  <% if (locals.list.length === 0) { %>
+    <h5 class="text-center" style="margin: 50px 50px !important;">No posts available.</h5>
+    <p class="text-center">Empty canvas, limitless potential. Your first post could be the start of something amazing!</p>
+    <form class="d-flex justify-content-center" action="/create" method="GET">
+        <button class="btn btn-success btn-md" style="margin: 50px 50px;">Create a new post</button>
+    </form>
+
+  <% } else if (locals.list.length === 1) { %>
+    <div class="card w-75 text-dark bg-light mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><%= list[0].title %></h5>
+        <h6 class="card-subtitle mb-2 text-muted">Published on: <%= list[0].date.toString() %></h6>
+        <p class="card-text"><%= list[0].content %></p>
+      </div>
+      <div class="card-footer">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <form action="/edit/0" method="GET">
+            <button class="btn btn-primary btn-sm" style="background-color: #1B1A55 !important;border-color: #1B1A55 !important;">Edit this post</button>
+          </form>
+          <form action="/delete/0" method="POST">
+            <input type="hidden" name="index" value="0">
+            <input class="btn btn-primary btn-sm" style="background-color: #1B1A55 !important;border-color: #1B1A55 !important;" type="submit" value="Delete this post">
+          </form>
+        </div>  
+      </div>
+    </div>
+  
+  <% } else { %>
+    <% for (let index = locals.list.length - 1; index >= 0; index--) { %>
+      <div class="card w-75 text-dark bg-light mb-3">
+        <div class="card-body">
+          <h5 class="card-title"><%= list[index].title %></h5>
+          <h6 class="card-subtitle mb-2 text-muted">Published on: <%= list[index].date.toString() %></h6>
+          <p class="card-text"><%= list[index].content %></p>
+        </div>
+        <div class="card-footer">
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <form action="/edit/<%= index %>" method="GET">
+              <button class="btn btn-primary btn-sm" style="background-color: #1B1A55 !important;border-color: #1B1A55 !important;">Edit this post</button>
+            </form>
+            <form action="/delete/<%= index %>" method="POST">
+              <input type="hidden" name="index" value="<%= index %>">
+              <input class="btn btn-primary btn-sm" style="background-color: #1B1A55 !important;border-color: #1B1A55 !important;" type="submit" value="Delete this post">
+            </form>
+          </div>  
+        </div>
+      </div>
+    <% } %>
+  <% } %>
+</div>
+
+<%- include("partials/footer.ejs") %>

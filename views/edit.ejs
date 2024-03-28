@@ -1,0 +1,20 @@
+<%- include("partials/header.ejs") %>
+
+<div class="row justify-content-center">
+    <h1 class="text-center" style="margin: 50px 50px;">Edit Post</h1>
+    <div class="card w-75 text-dark bg-light mb-3">
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Date published : <%= post.date.toString() %></h6>
+            <form action="/edit_post" method="POST">
+                <input type="hidden" name="index" value="<%= index %>">
+                <h4>Title</h4>
+                <input class="form-control input-sm" type="text" name="title" value="<%= post.title %>" required>
+                <h4>Content</h4>
+                <textarea class="form-control input-lg" name="content" rows="8" required><%= post.content %></textarea>
+                <input class="btn btn-primary btn-md" style="background-color: #1B1A55 !important;border-color: #1B1A55 !important;" type="submit" value="Submit Changes">
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include("partials/footer.ejs") %>
