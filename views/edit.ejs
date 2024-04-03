@@ -4,7 +4,7 @@
     <h1 class="text-center" style="margin: 50px 50px;">Edit Post</h1>
     <div class="card w-75 text-dark bg-light mb-3">
         <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted">Date published : <%= post.date.toString() %></h6>
+            <h6 class="card-subtitle mb-2 text-muted">Date published : <%= post.date.toString() %> from <%=city%></h6>
             <form action="/edit_post" method="POST">
                 <input type="hidden" name="index" value="<%= index %>">
                 <h4>Title</h4>
