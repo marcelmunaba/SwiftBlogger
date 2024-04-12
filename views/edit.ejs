@@ -4,9 +4,9 @@
     <h1 class="text-center" style="margin: 50px 50px;">Edit Post</h1>
     <div class="card w-75 text-dark bg-light mb-3">
         <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted">Date published : <%= post.date.toString() %> from <%=city%></h6>
+            <h6 class="card-subtitle mb-2 text-muted">Date published : <%= post.date_column %> from <%=city%></h6>
             <form action="/edit_post" method="POST">
-                <input type="hidden" name="index" value="<%= index %>">
+                <input type="hidden" name="index" value="<%= post.user_post_id %>">
                 <h4>Title</h4>
                 <input class="form-control input-sm" type="text" name="title" value="<%= post.title %>" required>
                 <h4>Content</h4>

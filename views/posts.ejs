@@ -16,43 +16,48 @@
     <div class="card w-75 text-dark bg-light mb-3">
       <div class="card-body">
         <h5 class="card-title"><%= list[0].title %></h5>
-        <h6 class="card-subtitle mb-2 text-muted">Published on: <%= list[0].date.toString() %> from <%=city%></h6>
+        <h6 class="card-subtitle mb-2 text-muted">Published on: <%= list[0].date_column %> from <%=city%></h6>
         <p class="card-text"><%= list[0].content %></p>
       </div>
       <div class="card-footer">
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <form action="/edit/0" method="GET">
+          <form action="/edit/<%= list[0].user_post_id %>" method="GET">
             <button class="btn btn-primary btn-sm" style="background-color: #1B1A55 !important;border-color: #1B1A55 !important;">Edit this post</button>
           </form>
-          <form action="/delete/0" method="POST">
-            <input type="hidden" name="index" value="0">
+          <form action="/delete/<%= list[0].user_post_id %>" method="POST">
+            <input type="hidden" name="index" value="<%= list[0].user_post_id %>">
             <input class="btn btn-primary btn-sm" style="background-color: #1B1A55 !important;border-color: #1B1A55 !important;" type="submit" value="Delete this post">
           </form>
-        </div>  
+        </div>
       </div>
     </div>
-  
+  <form class="d-flex justify-content-center" action="/create" method="GET">
+      <button class="btn btn-success btn-md" style="margin: 50px 50px;">Create a new post</button>
+  </form>
   <% } else { %>
     <% for (let index = locals.list.length - 1; index >= 0; index--) { %>
       <div class="card w-75 text-dark bg-light mb-3">
         <div class="card-body">
           <h5 class="card-title"><%= list[index].title %></h5>
-          <h6 class="card-subtitle mb-2 text-muted">Published on: <%= list[index].date.toString() %> from <%=city %></h6>
+          <h6 class="card-subtitle mb-2 text-muted">Published on: <%= list[index].date_column %> from <%=city %></h6>
           <p class="card-text"><%= list[index].content %></p>
         </div>
         <div class="card-footer">
           <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-            <form action="/edit/<%= index %>" method="GET">
+            <form action="/edit/<%= list[index].user_post_id %>" method="GET">
               <button class="btn btn-primary btn-sm" style="background-color: #1B1A55 !important;border-color: #1B1A55 !important;">Edit this post</button>
             </form>
-            <form action="/delete/<%= index %>" method="POST">
-              <input type="hidden" name="index" value="<%= index %>">
+            <form action="/delete/<%= list[index].user_post_id %>" method="POST">
+              <input type="hidden" name="index" value="<%= list[index].user_post_id %>">
               <input class="btn btn-primary btn-sm" style="background-color: #1B1A55 !important;border-color: #1B1A55 !important;" type="submit" value="Delete this post">
             </form>
-          </div>  
+          </div>
         </div>
       </div>
     <% } %>
+    <form class="d-flex justify-content-center" action="/create" method="GET">
+        <button class="btn btn-success btn-md" style="margin: 50px 50px;">Create a new post</button>
+    </form>
   <% } %>
 </div>
 
