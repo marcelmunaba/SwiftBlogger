@@ -1,4 +1,4 @@
-﻿# SwiftBlogger  <a href="url"><img src="public/logo.PNG" align="left" height="48" width="48" ></a>
+# SwiftBlogger  <a href="url"><img src="public/logo.PNG" align="left" height="48" width="48" ></a>
 This project is deployed to https://swiftblogger.onrender.com
 
 A simple blogging site made using Node.js, Express.js, and EJS. Posts are not persistent between sessions as no database are used in this version of the application.
@@ -23,3 +23,4 @@ A simple blogging site made using Node.js, Express.js, and EJS. Posts are not pe
 
 # Known Bugs
 1. Server side geolocation - leads to incorrect blog author's location
+2. Latest blogpost shows the incorrect post
