@@ -10,9 +10,9 @@
         <p class="lead mb-4">Latest Blogpost: </p>
         <div class="card w-75 text-dark bg-light mb-3">
           <div class="card-body">
-            <h5 class="card-title"><%= list[0].title %></h5>
+            <h5 class="card-title"><%= list[list.length-1].title %></h5>
             <h6 class="card-subtitle mb-2 text-muted">Published on: <%= list[0].date_column %> from <%=city%></h6>
-            <p class="card-text"><%= list[0].content %></p>
+            <p class="card-text"><%= list[list.length-1].content %></p>
           </div>
         </div>
       </div>
